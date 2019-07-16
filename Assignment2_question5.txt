@@ -1,0 +1,41 @@
+Step 1 : create two EC2 instances
+
+Step 2 : Each of those instances are connected to SSH separately through MobaXterm using private key 
+
+Step 3 : Consider one instance as the 'source' and the other as 'destination'
+
+Step 4 : On the source instance run the following command
+
+          ssh-keygen –t rsa
+
+Step 5 : Public key would be saved as id_rsa.pub and private key would be saved as id_rsa
+
+Step 6 : directed to .ssh/ folder in source instance
+
+         cd .ssh/
+
+Step 7 : view the content in id_rsa.pub which is located in .ssh/
+
+         cat id_rsa.pub
+
+Step 8 : directed to .ssh folder in 'destination' instance
+
+         cd .shh
+
+Step 9 : Opened 'authorized_keys' file in '.ssh'
+
+         vi authorized_keys
+
+Step 10 : The content in this file is replaced by the content of 'id_rsa.pub' file 
+
+Step 11 : The permissions for .ssh folder destination instance has to be set to 700(rwx------) and authorized_keys file is set to 600(rw-------) permissions 
+          for the SSH connection to work
+
+         chmod 700 .ssh/
+         chmod 600 authorized_keys
+
+Step 12 : After correcting the permissions, gone to 'source instance' and typed the followed command
+
+        ssh destination_instance_DNS_name
+
+Step 13 : We would see that we got logged into destination instance through source instance

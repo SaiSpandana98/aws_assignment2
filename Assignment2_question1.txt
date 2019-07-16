@@ -1,0 +1,85 @@
+Question 1:
+
+step 1- Launching an EC2 instance in n.verginia #chosen Amazon Linux AMI
+        #The security group must include inbound rules for SSH and HTTP access
+
+step 2- connect to instance and install web server
+      $ sudo yum update -y
+
+#install the Apache web server with the PHP software package using the yum install command
+
+      $ sudo yum install -y httpd24 php56 php56-mysqlnd
+
+#Start the web server with the command shown following
+
+      $ sudo service httpd start
+
+#Configure the web server to start with each system boot using the chkconfig command
+
+      $ sudo chkconfig httpd on
+
+#you add a group named www to your EC2 instance, and then you give that group ownership of the /var/www directory and add write permissions for the group
+
+      $ sudo groupadd www
+      $ sudo usermod -a -G www ec2-user
+      $ exit
+
+#verify that the www group exists with the groups command
+
+      $ groups
+      ec2-user wheel www
+
+#Change the group ownership of the /var/www directory and its contents to the www group
+
+      $ sudo chown -R root:www /var/www
+
+#Change the directory permissions of /var/www and its subdirectories to add group write permissions and set the group ID on subdirectories created in the future
+
+      $ sudo chmod 2775 /var/www
+      $ find /var/www -type d -exec sudo chmod 2775 {} +
+
+#Recursively change the permissions for files in the /var/www directory and its subdirectories to add group write permissions
+
+      $ find /var/www -type f -exec sudo chmod 0664 {} +
+
+#change the directory to /var/www and create a new subdirectory named inc
+
+      $ cd /var/www/html
+      $ mkdir inc
+
+#in inc folder writing html content into created index.html file
+
+      $ cd inc
+      $ echo "<html><h1>Hello from Spandana</h1></html>" > index.html
+
+#browsing to http://EC2 instance endpoint/index.html
+    
+  $ http://EC2 instance public DNS Name/inc/index.html
+
+Step 3: Created an AMI of this instance.
+
+Step 4 : Meanwhile a classic loadbalancer is created
+         
+Step 5 : actual instance is terminated, created launch configuration for our AMI
+
+Step 6 : Next created autoscaling grp to the launch configuration, with a VPC and 2 subnets in different zones
+
+         for a classic load balancer target group is not required 
+
+Step 7 : Using scaling grp, instance would be launched automatically
+
+Step 8 : DNS name of the instance is copied and added the index.html file path to it. We would find index.html file
+
+The listner configuration would be HTTP port, TCP protocol, 0.0.0.0/0 source 
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+Question 4 : 
+
+
+security group rules for -
+
+Bastian server  (us-east-1a)
+
+Inbound rules
+
+Type         Protocol        port         source
+
+SSH           TCP             22          59.152.53.168/30
+SSH           TCP             22          59.152.53.104/29
+SSH           TCP             22          59.152.53.200/29
+SSH           TCP             22          59.152.53.120/29
+SSH           TCP             22          59.152.52.104/29
+SSH           TCP             22          59.152.52.152/29
+SSH           TCP             22          59.152.52.172/30
+SSH           TCP             22          202.122.21.69/32
+
+Outbound rules
+
+Type                 Protocol         port         source
+
+All traffic           All             All          0.0.0.0/0
+
+
+Elastic IP is created and associated to the bastian server
+
+Inbound rules :
+
+Private instance  (us-east-1a) security grp
+
+
+Type         Protocol        port         source
+
+SSH           TCP             22         3.218.215.153/32
+
+Private instance  (us-east-1b) security grp
+
+Type         Protocol        port         source
+
+SSH           TCP             22          3.218.215.153/32
+
+Private instance  (us-east-1c) security grp
+
+Type         Protocol        port         source
+
+SSH           TCP             22          3.218.215.153/32
+
+

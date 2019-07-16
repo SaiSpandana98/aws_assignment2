@@ -1,0 +1,311 @@
+Question 3 :
+
+Step 1 : create a VPC
+
+aws ec2 create-vpc --cidr-block 10.0.0.0/16
+
+{
+    "Vpc": {
+        "VpcId": "vpc-0237dc8035de60633",
+        "InstanceTenancy": "default",
+        "Tags": [],
+        "CidrBlockAssociationSet": [
+            {
+                "AssociationId": "vpc-cidr-assoc-08323d5fc1202fc3d",
+                "CidrBlock": "10.0.0.0/16",
+                "CidrBlockState": {
+                    "State": "associated"
+                }
+            }
+        ],
+        "Ipv6CidrBlockAssociationSet": [],
+        "State": "pending",
+        "DhcpOptionsId": "dopt-18e4817e",
+        "OwnerId": "488599217855",
+        "CidrBlock": "10.0.0.0/16",
+        "IsDefault": false
+    }
+}
+
+Step 2 : create a subnet in us-east-1a AZ
+
+aws ec2 create-subnet --vpc-id vpc-0237dc8035de60633 --cidr-block 10.0.0.0/19 --region us-east-1 --availability-zone us-east-1a
+
+{
+    "Subnet": {
+        "MapPublicIpOnLaunch": false,
+        "AvailabilityZoneId": "use1-az2",
+        "AvailableIpAddressCount": 8187,
+        "DefaultForAz": false,
+        "SubnetArn": "arn:aws:ec2:us-east-1:488599217855:subnet/subnet-0832c472ecdd56d0b",
+        "Ipv6CidrBlockAssociationSet": [],
+        "VpcId": "vpc-0237dc8035de60633",
+        "State": "pending",
+        "AvailabilityZone": "us-east-1a",
+        "SubnetId": "subnet-0832c472ecdd56d0b",
+        "OwnerId": "488599217855",
+        "CidrBlock": "10.0.0.0/19",
+        "AssignIpv6AddressOnCreation": false
+    }
+}
+
+Step 3 : created another subnet in us-east-1a AZ
+
+aws ec2 create-subnet --vpc-id vpc-0237dc8035de60633 --cidr-block 10.0.32.0/19 --region us-east-1 --availability-zone us-east-1a
+
+{
+    "Subnet": {
+        "MapPublicIpOnLaunch": false,
+        "AvailabilityZoneId": "use1-az2",
+        "AvailableIpAddressCount": 8187,
+        "DefaultForAz": false,
+        "SubnetArn": "arn:aws:ec2:us-east-1:488599217855:subnet/subnet-03b049e42d0dde037",
+        "Ipv6CidrBlockAssociationSet": [],
+        "VpcId": "vpc-0237dc8035de60633",
+        "State": "pending",
+        "AvailabilityZone": "us-east-1a",
+        "SubnetId": "subnet-03b049e42d0dde037",
+        "OwnerId": "488599217855",
+        "CidrBlock": "10.0.32.0/19",
+        "AssignIpv6AddressOnCreation": false
+    }
+}
+
+step 4 : create subnet in us-east-1b AZ
+
+aws ec2 create-subnet --vpc-id vpc-0237dc8035de60633 --cidr-block 10.0.64.0/19 --region us-east-1 --availability-zone us-east-1b
+
+{
+    "Subnet": {
+        "MapPublicIpOnLaunch": false,
+        "AvailabilityZoneId": "use1-az4",
+        "AvailableIpAddressCount": 8187,
+        "DefaultForAz": false,
+        "SubnetArn": "arn:aws:ec2:us-east-1:488599217855:subnet/subnet-03d30b2d46383c1e1",
+        "Ipv6CidrBlockAssociationSet": [],
+        "VpcId": "vpc-0237dc8035de60633",
+        "State": "pending",
+        "AvailabilityZone": "us-east-1b",
+        "SubnetId": "subnet-03d30b2d46383c1e1",
+        "OwnerId": "488599217855",
+        "CidrBlock": "10.0.64.0/19",
+        "AssignIpv6AddressOnCreation": false
+    }
+}
+
+step 5 : create another subnet in us-east-1b AZ
+
+aws ec2 create-subnet --vpc-id vpc-0237dc8035de60633 --cidr-block 10.0.96.0/19 --region us-east-1 --availability-zone us-east-1b
+
+{
+    "Subnet": {
+        "MapPublicIpOnLaunch": false,
+        "AvailabilityZoneId": "use1-az4",
+        "AvailableIpAddressCount": 8187,
+        "DefaultForAz": false,
+        "SubnetArn": "arn:aws:ec2:us-east-1:488599217855:subnet/subnet-06f764a1c6114e60c",
+        "Ipv6CidrBlockAssociationSet": [],
+        "VpcId": "vpc-0237dc8035de60633",
+        "State": "pending",
+        "AvailabilityZone": "us-east-1b",
+        "SubnetId": "subnet-06f764a1c6114e60c",
+        "OwnerId": "488599217855",
+        "CidrBlock": "10.0.96.0/19",
+        "AssignIpv6AddressOnCreation": false
+    }
+}
+
+step 6 : create subnet in us-east-1c AZ
+
+aws ec2 create-subnet --vpc-id vpc-0237dc8035de60633 --cidr-block 10.0.128.0/19 --region us-east-1 --availability-zone us-east-1c
+
+{
+    "Subnet": {
+        "MapPublicIpOnLaunch": false,
+        "AvailabilityZoneId": "use1-az6",
+        "AvailableIpAddressCount": 8187,
+        "DefaultForAz": false,
+        "SubnetArn": "arn:aws:ec2:us-east-1:488599217855:subnet/subnet-0d382f1d39a51b5ad",
+        "Ipv6CidrBlockAssociationSet": [],
+        "VpcId": "vpc-0237dc8035de60633",
+        "State": "pending",
+        "AvailabilityZone": "us-east-1c",
+        "SubnetId": "subnet-0d382f1d39a51b5ad",
+        "OwnerId": "488599217855",
+        "CidrBlock": "10.0.128.0/19",
+        "AssignIpv6AddressOnCreation": false
+    }
+}
+
+step 7 : create another subnet in us-east-1c AZ
+
+aws ec2 create-subnet --vpc-id vpc-0237dc8035de60633 --cidr-block 10.0.160.0/19 --region us-east-1 --availability-zone us-east-1c
+
+{
+    "Subnet": {
+        "MapPublicIpOnLaunch": false,
+        "AvailabilityZoneId": "use1-az6",
+        "AvailableIpAddressCount": 8187,
+        "DefaultForAz": false,
+        "SubnetArn": "arn:aws:ec2:us-east-1:488599217855:subnet/subnet-0578070571af0691c",
+        "Ipv6CidrBlockAssociationSet": [],
+        "VpcId": "vpc-0237dc8035de60633",
+        "State": "pending",
+        "AvailabilityZone": "us-east-1c",
+        "SubnetId": "subnet-0578070571af0691c",
+        "OwnerId": "488599217855",
+        "CidrBlock": "10.0.160.0/19",
+        "AssignIpv6AddressOnCreation": false
+    }
+}
+
+step 8 : inorder to make subnets public, IGW and route table are to be created and associated to those subnets 
+
+aws ec2 create-internet-gateway
+
+
+{
+    "InternetGateway": {
+        "Tags": [],
+        "Attachments": [],
+        "InternetGatewayId": "igw-02bd4f4db706a9747"
+    }
+}
+
+aws ec2 attach-internet-gateway --vpc-id vpc-0237dc8035de60633 --internet-gateway-id igw-02bd4f4db706a9747 --region us-east-1
+
+aws ec2 create-route-table --vpc-id vpc-0237dc8035de60633
+
+{
+    "RouteTable": {
+        "Associations": [],
+        "RouteTableId": "rtb-0d4053d29f43ffba5",
+        "VpcId": "vpc-0237dc8035de60633",
+        "PropagatingVgws": [],
+        "Tags": [],
+        "Routes": [
+            {
+                "GatewayId": "local",
+                "DestinationCidrBlock": "10.0.0.0/16",
+                "State": "active",
+                "Origin": "CreateRouteTable"
+            }
+        ],
+        "OwnerId": "488599217855"
+    }
+}
+
+
+
+aws ec2 create-route --route-table-id rtb-0d4053d29f43ffba5 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-02bd4f4db706a9747
+
+{
+    "Return": true
+}
+
+aws ec2 describe-route-tables --route-table-id rtb-0d4053d29f43ffba5
+
+{
+    "RouteTables": [
+        {
+            "Associations": [],
+            "RouteTableId": "rtb-0d4053d29f43ffba5",
+            "VpcId": "vpc-0237dc8035de60633",
+            "PropagatingVgws": [],
+            "Tags": [],
+            "Routes": [
+                {
+                    "GatewayId": "local",
+                    "DestinationCidrBlock": "10.0.0.0/16",
+                    "State": "active",
+                    "Origin": "CreateRouteTable"
+                },
+                {
+                    "GatewayId": "igw-02bd4f4db706a9747",
+                    "DestinationCidrBlock": "0.0.0.0/0",
+                    "State": "active",
+                    "Origin": "CreateRoute"
+                }
+            ],
+            "OwnerId": "488599217855"
+        }
+    ]
+}
+
+
+
+aws ec2 describe-subnets --filters "Name=vpc-id,Values=vpc-0237dc8035de60633" --query 'Subnets[*].{ID:SubnetId,CIDR:CidrBlock}'
+
+
+aws ec2 associate-route-table  --subnet-id subnet-0832c472ecdd56d0b --route-table-id rtb-0d4053d29f43ffba5
+
+{
+    "AssociationId": "rtbassoc-0fe62f96d84c815ea"
+}
+
+
+
+aws ec2 associate-route-table  --subnet-id subnet-03d30b2d46383c1e1 --route-table-id rtb-0d4053d29f43ffba5
+
+{
+    "AssociationId": "rtbassoc-0ca17e193c4cef539"
+}
+
+
+aws ec2 associate-route-table  --subnet-id subnet-0d382f1d39a51b5ad --route-table-id rtb-0d4053d29f43ffba5
+
+{
+    "AssociationId": "rtbassoc-0114eb5c1517cef91"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.hadoopandcloud.com/linux/passwordless-ssh-connection-setup/
+
+
+Your identification has been saved in /home/ec2-user/.ssh/id_rsa.
+Your public key has been saved in /home/ec2-user/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:SIr/UDTnUNp6bH+vdP2eJUiIgbhMS+NLe3Ka62tn4cI ec2-user@ip-10-0-46-230
+The key's randomart image is:
++---[RSA 2048]----+
+|        .        |
+|     . =         |
+|    = B +        |
+|   * B O o .     |
+|  . B + S . .    |
+|   o +.o . . . . |
+|   .*.o.  . + o o|
+|    EO+    o o .+|
+|   o**.     ...oo|
++----[SHA256]-----+
+
+
+cat id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbCB0nl4nPjCA/DwoUNUhXx+Bl+iXwWPiUCXVqzh9Ogkv6vsNBKkCNCrHsNNTTklaDy/SoM0eLmRUkGUYmECuvgU/aOL9/h5VSQSSDKjbpwN7YdGIg9BTNPix5QhMbip+/lJ0hw+IU1d4bThv9//YYK6+ViAcQ0GzB6+wwZoRCSw/HLrH+uNKu8DaUWLRi3W9hSL3WXZLPc3BofICJ2K9fTRXPV29iBEqNKxiZKrw4msB4Vh6UnmDuV3BpZJ0vj7NS+YqoQHRpqprkmaxa5fnHCXV81xPl+R6bKuDCmfUllNZtZNDZCu+1yigwFuLOegUfgIeWxZb1AbLa/mV3/SJ/ ec2-user@ip-10-0-46-230
+
+
+
+
+
+
